@@ -40,7 +40,7 @@ module.exports = class ParserHTML {
         case 'metadata': {
           const interiorMeta= ParserHTML.parse(token.tokens1)
           const interiorBody= ParserHTML.parse(token.tokens2)
-          txt='\n<head>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'+interiorMeta+ '</head>\n\n<body>\n<div class="topnav"><div>\n<a href="https://laylahrain.com/books.html">LIBROS</a>\n<a href="https://laylahrain.com/blog.html">BLOG</a>\n<a class="imageButton" href="https://laylahrain.com/home.html"><img src="source/logo.png" alt="Titulo"></img></a>\n<a href="https://laylahrain.com/course.html">CURSO</a>\n<a href="https://laylahrain.com/art.html">ARTE</a>\n</div>\n</div>\n'+interiorBody+'\n</body>'
+          txt='\n<head>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'+interiorMeta+ '</head>\n\n<body>\n<div class="topnav"><div>\n<a href="https://laylahrain.com/books.html">LIBROS</a>\n<a href="https://laylahrain.com/blog.html">BLOG</a>\n<a class="imageButton" href="https://laylahrain.com/home.html"><img src="https://laylah-rain.github.io/source/logo.png" alt="Titulo"></img></a>\n<a href="https://laylahrain.com/course.html">CURSO</a>\n<a href="https://laylahrain.com/art.html">ARTE</a>\n</div>\n</div>\n'+interiorBody+'\n</body>'
           out += txt;
           continue;
         }
@@ -65,7 +65,7 @@ module.exports = class ParserHTML {
 
         case 'literature': {
           const interior= ParserHTML.parse(token.tokens)
-          const header= "<div class='header'>\n<p class='author'>$$DESCRIPTION_MINDDO$$</p>\n<p class='title'>$$TITLE_MINDDO$$</p>\n<p class='description'>$$AUTHOR_MINDDO$$, $$YEAR_MINDDO$$</p>\n</div>\n\n"
+          const header= "<div class='header'>\n<p class='title'>$$TITLE_MINDDO$$</p>\n<p class='author'>$$DESCRIPTION_MINDDO$$</p>\n<p class='description'>$$AUTHOR_MINDDO$$, $$YEAR_MINDDO$$</p>\n</div>\n\n"
           txt='<div class="literature">\n\n'+header+interior+ '</div>\n\n';
           out += txt;
           continue;
@@ -98,6 +98,12 @@ module.exports = class ParserHTML {
 
         case 'audio': {
           txt='<div class="audio">\n<audio controls>\n<source src="'+token.link+'" alt="'+token.title+'"type="audio/mpeg">\n</audio>\n</div>';
+          out += txt;
+          continue;
+        }
+
+        case 'image_link': {
+          txt='<a target="_blank" href="'+token.external+'"><img src="'+token.link+'" alt="'+token.title+'"width="'+token.width+'"></img></a>\n';
           out += txt;
           continue;
         }

@@ -124,6 +124,20 @@ module.exports = class Tokenizer {
     }
   }
 
+  image_link(src) {
+    const cap = this.rules.image_link.exec(src);
+    if (cap) {
+      return {
+        type: 'image_link',
+        raw: cap[0],
+        title: cap[1],
+        link:cap[2],
+        width:cap[3],
+        external:cap[4]
+      };
+    }
+  }
+
   image_caption(src) {
     const cap = this.rules.image_caption.exec(src);
     if (cap) {

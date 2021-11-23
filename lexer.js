@@ -75,6 +75,13 @@ module.exports = class Lexer {
         continue;
       }
 
+      // IMAGE_LINK
+      if (token = this.tokenizer.image_link(src)) {
+        src = src.replace(token.raw,'');
+        tokens.push(token);
+        continue;
+      }
+
       // IMAGE_CAPTION
       if (token = this.tokenizer.image_caption(src)) {
         src = src.replace(token.raw,'');
