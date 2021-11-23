@@ -288,6 +288,7 @@ module.exports = class Tokenizer {
   ref(src) {
     const cap = this.rules.ref.exec(src);
     if (cap) {
+      console.log("PERRO")
       return {
         type: 'ref',
         raw: cap[0],

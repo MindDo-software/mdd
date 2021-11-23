@@ -1,8 +1,9 @@
 // LANGUAGE: es
 // TITLE: La cucarachita mandinga
-// CSS: https://minddo.org/source/style_1.css
+// CSS: https://minddo-software.github.io/source/style.css
 // AUTHOR: Carmen Lyra
 // YEAR: 2090
+// DESCRIPTION: Descripción
 
 
 !![source/title1.pdf]
@@ -13,15 +14,17 @@
 ------------START_TEXT-------------
 
 
-Texto donde se hace <referencia[1]> a la nota.
+Texto *donde* se hace <referencia[^1]> a la ***nota***.
 
 Nature 2.0 did not come up from the mind of one crazy thinker out of one experience. It is the latest iteration of a years-long thinking process from many crazy thinkers of the world, working together to imagine a future , more beneficial for us all and for the environment and ecosystem we live in.
 
 
 A major milestone in the history of Nature 2.0 is an article eponym of this community shared on the Medium blogging platform. This article puts down the foundation of the community, explaining its origins, aims and dreams.
 
+!![Titulo](source/title.jpg)(20%)
+!![Titulo](source/title.jpg)(20%)
 
-Nature 2.0 did not come up from the mind of one crazy thinker out of one experience. It is the latest iteration of a years-long thinking process from many crazy thinkers of the world, working together to imagine a future different, more beneficial for us all and for the environment and ecosystem we live in. <different[2]>
+Nature 2.0 did not come up from the mind of one crazy thinker out of one experience. It is the latest iteration of a years-long thinking process from many crazy thinkers of the world, working together to imagine a future different, more beneficial for us all and for the environment and ecosystem we live in <different[^2]>.
 
 A major milestone in the history of Nature 2.0 is an article eponym of this community shared on the Medium blogging platform. This article puts down the foundation of the community, explaining its origins, aims and dreams.
 
@@ -49,9 +52,8 @@ A major milestone in the history of Nature 2.0 is an article eponym of this comm
 **Texto acá**
 
 
-[1]: La nota 1.
-[2]: La nota 2.
-[3]: La nota 3.
+[^1]: La nota 1.
+[^2]: La nota 2.
 
 --------------END_TEXT-------------
 
