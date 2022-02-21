@@ -6,7 +6,7 @@ Esta librería está programada en Javascript haciendo uso de node.js unicamente
 
 Sin embargo debido a que se desea acceder a la librería facilmente desde una página web, se debe de usar browserify para crear un solo documento a llamar. 
 
-> browserify mdd.js --standalone myBundle > dist/mdd.min.js
+> browserify mdd.js --standalone mdd > dist/mdd.min.js
 
 La librería se usa al correr la función market(src) en src/market.js. Donde el parámetro que se pasa es el texto a traducir. 
 
@@ -20,5 +20,3 @@ La función market(src) primero llama a Lexer para crear los tokens, y luego le 
 const tokens = Lexer.lex(src, opt);
 return Parser.parse(tokens, opt);
 ```
-
-Un token 

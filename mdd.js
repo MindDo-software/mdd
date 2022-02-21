@@ -8,8 +8,8 @@ const { block } = require('./rules.js');
  * Marked
  */
 function mdd(src, format) {
+  
   var tokens;
-
   // La entrara debe de ser un string
   if (typeof src === 'undefined' || src === null) {
     throw new Error('marked(): input parameter is undefined or null');
@@ -22,6 +22,7 @@ function mdd(src, format) {
 
   // Realiza la operación
   try {
+    console.log('Entrando')
 
     tokens = Lexer.lex(src);
     //console.log(tokens);
@@ -29,13 +30,30 @@ function mdd(src, format) {
     if(format=="html"){
       //console.log(tokens);
       var out = ParserHTML.parse(tokens);
-      //console.log(out);
-      const author = block.html_author.exec(out)[1];
-      const year = block.html_year.exec(out)[1];
-      const title = block.html_title.exec(out)[1];
-      const description = block.html_description.exec(out)[1];
+      var author='author'
+      var year='year'
+      var title='title'
+      var description='description'
+
+      if(block.html_author.exec(out)){
+        author = block.html_author.exec(out)[1];
+      }
+
+      if (block.html_year.exec(out)){
+        year= block.html_year.exec(out)[1]
+      }
+
+      if (block.html_title.exec(out)){
+        title = block.html_title.exec(out)[1]
+      }
+
+      if (block.html_description.exec(out)){
+        description= block.html_description.exec(out)[1];
+      }
+
       out = out.replace('$$AUTHOR_MINDDO$$', author).replace('$$YEAR_MINDDO$$', year).replace('$$DESCRIPTION_MINDDO$$', description).replace('$$TITLE_MINDDO$$', title);
       out = out.replace(/\+ /gm, '&nbsp ');
+      console.log(out)
       return out;
     }
 
