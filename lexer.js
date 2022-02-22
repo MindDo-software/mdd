@@ -204,6 +204,16 @@ module.exports = class Lexer {
         continue;
       }
 
+      // LINE BREAK
+      if (token = this.tokenizer.line_break(src)) {
+        console.log("ENTROOOO")
+        src = src.substring(token.raw.length);
+        token.tokensPrevious = Lexer.lex(token.previous);
+        token.tokensNext = Lexer.lex(token.next)
+        tokens.push(token);
+        continue;
+      }
+
       // LINK
       if (token = this.tokenizer.link(src)) {
         src = src.replace(token.raw,'');
@@ -259,6 +269,10 @@ module.exports = class Lexer {
       if (token = this.tokenizer.text(src)) {
         tokens.push(token);
         break;
+      }
+
+      if(true){
+        console.log("Sin match")
       }
 
     }

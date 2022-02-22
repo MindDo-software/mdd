@@ -25,7 +25,8 @@ function mdd(src, format) {
     console.log('Entrando')
 
     tokens = Lexer.lex(src);
-    //console.log(tokens);
+    console.log("Tokens")
+    console.log(tokens);
 
     if(format=="html"){
       //console.log(tokens);

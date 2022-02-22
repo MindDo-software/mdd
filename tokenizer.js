@@ -280,6 +280,19 @@ module.exports = class Tokenizer {
     }
   }
 
+  line_break(src) {
+    const cap = this.rules.line_break.exec(src);
+    if (cap) {
+      console.log(cap);
+      return {
+        type: 'line_break',
+        raw: cap[0],
+        previous: cap[1],
+        next: cap[2],
+      };
+    }
+  }
+
   link(src) {
     const cap = this.rules.link.exec(src);
     if (cap) {

@@ -180,6 +180,23 @@ module.exports = class ParserHTML {
           continue;
         }
 
+        case 'line_break': {
+          const previous= ParserHTML.parse(token.tokensPrevious)
+          const next= ParserHTML.parse(token.tokensNext);
+          txt=previous+'<br>'+next;
+          out += txt;
+          continue;
+        }
+
+        case 'bold': {
+          const previous= ParserHTML.parse(token.tokensPrevious)
+          const text= ParserHTML.parse(token.tokensText);
+          const next= ParserHTML.parse(token.tokensNext);
+          txt=previous+'<b>'+text+'</b>'+next;
+          out += txt;
+          continue;
+        }
+
         case 'link': {
           const previous= ParserHTML.parse(token.tokensPrevious)
           const next= ParserHTML.parse(token.tokensNext);
