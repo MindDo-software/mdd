@@ -10,6 +10,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
+
 /************************/
 /******** BASICS ********/
 /************************/
@@ -46,6 +47,11 @@ body {
   font-size: 1rem;
   line-height: 1.65rem;
   margin:0;
+}
+
+a {
+  font-weight: 500;
+  color:chocolate;
 }
 
 

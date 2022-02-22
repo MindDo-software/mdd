@@ -40,7 +40,7 @@ module.exports = class ParserHTML {
         case 'metadata': {
           const interiorMeta= ParserHTML.parse(token.tokens1)
           const interiorBody= ParserHTML.parse(token.tokens2)
-          txt='\n<head>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'+interiorMeta+ '</head>\n\n<body>\n<div class="topnav"><div>\n<a href="https://laylahrain.com/libros/0_libros/libros.html">LIBROS</a>\n<a href="https://laylahrain.com/blog/0_blog/blog.html">BLOG</a>\n<a class="imageButton" href="https://laylahrain.com/hogar.html"><img src="https://laylah-rain.github.io/source/logo.png" alt="Titulo"></img></a>\n<a href="https://laylahrain.com/cursos/0_cursos/cursos.html">CURSO</a>\n<a href="https://laylahrain.com/arte/0_arte/arte.html">ARTE</a>\n</div>\n</div>\n'+interiorBody+'\n</body>'
+          txt='\n<head>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'+interiorMeta+ '</head>\n\n<body>\n<div class="topnav"><div>\n<a href="https://laylahrain.com/libros/0_libros/libros.html">LIBROS</a>\n<a href="https://laylahrain.com/blog/0_blog/blog.html">BLOG</a>\n<a class="imageButton" href="https://laylahrain.com"><img src="https://laylah-rain.github.io/source/logo.png" alt="Titulo"></img></a>\n<a href="https://laylahrain.com/curso/0_curso/curso.html">CURSO</a>\n<a href="https://laylahrain.com/arte/0_arte/arte.html">ARTE</a>\n</div>\n</div>\n'+interiorBody+'\n</body>'
           out += txt;
           continue;
         }
