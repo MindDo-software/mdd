@@ -20,3 +20,7 @@ La función market(src) primero llama a Lexer para crear los tokens, y luego le 
 const tokens = Lexer.lex(src, opt);
 return Parser.parse(tokens, opt);
 ```
+
+# TODO LIST
+
+El redex de paragraph está hardcodeado para detectar unicamente parrafos de 2 lineas. 

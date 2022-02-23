@@ -196,6 +196,7 @@ module.exports = class Lexer {
         continue;
       }
 
+
       // PARAGRAPH
       if (token = this.tokenizer.paragraph(src)) {
         src = src.substring(token.raw.length);
@@ -206,13 +207,14 @@ module.exports = class Lexer {
 
       // LINE BREAK
       if (token = this.tokenizer.line_break(src)) {
-        console.log("ENTROOOO")
         src = src.substring(token.raw.length);
         token.tokensPrevious = Lexer.lex(token.previous);
         token.tokensNext = Lexer.lex(token.next)
         tokens.push(token);
         continue;
       }
+      
+
 
       // LINK
       if (token = this.tokenizer.link(src)) {

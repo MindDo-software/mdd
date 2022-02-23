@@ -269,9 +269,12 @@ module.exports = class Tokenizer {
   }
 
 
+
   paragraph(src) {
     const cap = this.rules.paragraph.exec(src);
     if (cap) {
+      console.log('Parrafo');
+      console.log(cap);
       return {
         type: 'paragraph',
         raw: cap[0],
@@ -283,6 +286,7 @@ module.exports = class Tokenizer {
   line_break(src) {
     const cap = this.rules.line_break.exec(src);
     if (cap) {
+      console.log('Line break');
       console.log(cap);
       return {
         type: 'line_break',
