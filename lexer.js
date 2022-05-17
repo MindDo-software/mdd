@@ -75,6 +75,14 @@ module.exports = class Lexer {
         continue;
       }
 
+      // IMAGE_LINK_SAMETAB
+      if (token = this.tokenizer.image_link_sametab(src)) {
+        src = src.replace(token.raw,'');
+        tokens.push(token);
+        continue;
+      }
+
+
       // IMAGE_LINK
       if (token = this.tokenizer.image_link(src)) {
         src = src.replace(token.raw,'');
@@ -128,6 +136,14 @@ module.exports = class Lexer {
 
       // FOOTER
       if (token = this.tokenizer.footer(src)) {
+        src = src.replace(token.raw,'');
+        token.tokens = Lexer.lex(token.text)
+        tokens.push(token);
+        continue;
+      }
+
+      // HEADER
+      if (token = this.tokenizer.header(src)) {
         src = src.replace(token.raw,'');
         token.tokens = Lexer.lex(token.text)
         tokens.push(token);
@@ -214,6 +230,14 @@ module.exports = class Lexer {
         continue;
       }
       
+      // LINK_SAMETAB
+      if (token = this.tokenizer.link_sametab(src)) {
+        src = src.replace(token.raw,'');
+        token.tokensPrevious = Lexer.lex(token.previous);
+        token.tokensNext = Lexer.lex(token.next)
+        tokens.push(token);
+        continue;
+      }
 
 
       // LINK
@@ -265,6 +289,16 @@ module.exports = class Lexer {
         continue;
       }
 
+      // STRIKETHROUGH
+
+      if (token = this.tokenizer.strikethrough(src)) {
+        src = src.substring(token.raw.length);
+        token.tokensPrevious = Lexer.lex(token.previous);
+        token.tokensText = Lexer.lex(token.text)
+        token.tokensNext = Lexer.lex(token.next)
+        tokens.push(token);
+        continue;
+      }
 
 
       // TEXT

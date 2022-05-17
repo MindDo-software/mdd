@@ -99,6 +99,17 @@ module.exports = class Tokenizer {
     }
   }
 
+  header(src){
+    const cap = this.rules.header.exec(src);
+    if (cap) {
+      return {
+        type: 'header',
+        raw: cap[0],
+        text: cap[1]
+      };
+    }
+  }
+
 
   heading(src) {
     const cap = this.rules.heading.exec(src);
@@ -124,6 +135,20 @@ module.exports = class Tokenizer {
     }
   }
 
+  image_link_sametab(src) {
+    const cap = this.rules.image_link_sametab.exec(src);
+    if (cap) {
+      return {
+        type: 'image_link_sametab',
+        raw: cap[0],
+        title: cap[1],
+        link:cap[2],
+        width:cap[3],
+        external:cap[4]
+      };
+    }
+  }
+
   image_link(src) {
     const cap = this.rules.image_link.exec(src);
     if (cap) {
@@ -137,6 +162,7 @@ module.exports = class Tokenizer {
       };
     }
   }
+
 
   image_caption(src) {
     const cap = this.rules.image_caption.exec(src);
@@ -195,9 +221,9 @@ module.exports = class Tokenizer {
   blockquote(src) {
     const cap = this.rules.blockquote.exec(src);
     if (cap) {
-      const text3= cap[0].replace(/\n+/gm, "<br>");
-      const text2 = text3.replace(/>> /gm, '');
-      const text1 = text2.replace(/>>/gm, '');
+      const text3= cap[0].replace(/> /gm, '');
+      const text2 = text3.replace(/>/gm, '');
+      const text1 = text2.replace(/\n+/gm, "<br><br>");
       const text = text1.replace(/<br>$/gm, '');
 
       return {
@@ -297,6 +323,25 @@ module.exports = class Tokenizer {
     }
   }
 
+  link_sametab(src) {
+    const cap = this.rules.link_sametab.exec(src);
+    if (cap) {
+
+      if(cap[2]==''){
+        cap[2]=cap[3];
+      }
+
+      return {
+        type: 'link_sametab',
+        raw: cap[0],
+        previous: cap[1],
+        title:cap[2],
+        link:cap[3],
+        next: cap[4],
+      };
+    }
+  }
+
   link(src) {
     const cap = this.rules.link.exec(src);
     if (cap) {
@@ -362,6 +407,19 @@ module.exports = class Tokenizer {
     if (cap) {
       return {
         type: 'italic',
+        raw: cap[0],
+        previous: cap[1],
+        text: cap[2],
+        next: cap[3],
+      };
+    }
+  }
+
+  strikethrough(src) {
+    const cap = this.rules.strikethrough.exec(src);
+    if (cap) {
+      return {
+        type: 'strikethrough',
         raw: cap[0],
         previous: cap[1],
         text: cap[2],

@@ -4,13 +4,10 @@ const ParserLATEX = require('./parser_latex.js');
 const { block } = require('./rules.js');
 
 
-/**
- * Marked
- */
 function mdd(src, format) {
   
   var tokens;
-  // La entrara debe de ser un string
+  
   if (typeof src === 'undefined' || src === null) {
     throw new Error('marked(): input parameter is undefined or null');
   }
@@ -22,14 +19,16 @@ function mdd(src, format) {
 
   // Realiza la operación
   try {
-    console.log('Entrando')
 
     tokens = Lexer.lex(src);
-    console.log("Tokens")
     console.log(tokens);
 
-    if(format=="html"){
-      //console.log(tokens);
+    if(format=="latex"){
+      const out = ParserLATEX.parse(tokens);
+      return out;
+    }
+
+    else{
       var out = ParserHTML.parse(tokens);
       var author='author'
       var year='year'
@@ -55,11 +54,6 @@ function mdd(src, format) {
       out = out.replace('$$AUTHOR_MINDDO$$', author).replace('$$YEAR_MINDDO$$', year).replace('$$DESCRIPTION_MINDDO$$', description).replace('$$TITLE_MINDDO$$', title);
       out = out.replace(/\+ /gm, '&nbsp ');
       console.log(out)
-      return out;
-    }
-
-    if(format=="latex"){
-      const out = ParserLATEX.parse(tokens);
       return out;
     }
   
