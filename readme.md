@@ -6,7 +6,7 @@ MDD es una librería que transcribe un documento MD a un documento HTML. El obje
 
 MDD se basa en el modelo de la librería [Marked](https://github.com/markedjs/marked) creada por Christopher Jeffrey bajo la Licencia MIT.
 
-Acceda a la página [demo](https://proyectocostarica.github.io/mdd/mdd.html) para transformar un documento md a html.
+Acceda a la página [demo](https://minddo-software.github.io/mdd/mdd.html) para transformar un documento md a html.
 
 ## Comandos
 
