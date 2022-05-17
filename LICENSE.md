@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2021-2022 Laura Fonseca.
+Copyright (c) 2021-2022 Laylah Rain.
 Copyright (c) 2011-2022 Christopher Jeffrey. 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
